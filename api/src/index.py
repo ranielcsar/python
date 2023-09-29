@@ -1,8 +1,8 @@
-# from src.routes.incomes import add_income, get_incomes
-from src.model.transaction_type import TransactionType
-from src.model.income import Income, IncomeSchema
-from src.model.expense import Expense, ExpenseSchema
-from flask import Flask, jsonify, request
+from src.routes.incomes import incomes_route
+from src.routes.expenses import expenses_route
+from src.model.income import Income
+from src.model.expense import Expense
+from flask import Flask
 from flask_cors import CORS
 
 
@@ -18,39 +18,8 @@ transactions = [
 ]
 
 
-@app.route('/incomes')
-def get_incomes():
-    schema = IncomeSchema(many=True)
-    incomes = schema.dump(
-        filter(lambda transaction: transaction.type ==
-               TransactionType.INCOME, transactions)
-    )
-
-    return jsonify(incomes)
-
-
-@app.route('/incomes', methods=['POST'])
-def add_income():
-    income = IncomeSchema().load(request.get_json())
-    transactions.append(income)
-    return jsonify({'message': 'Income added succesfully'}), 200
-
-
-@app.route('/expenses')
-def get_expenses():
-    schema = ExpenseSchema(many=True)
-    expenses = schema.dump(
-        filter(lambda transaction: transaction.type ==
-               TransactionType.EXPENSE, transactions)
-    )
-    return jsonify(expenses)
-
-
-@app.route('/expenses', methods=['POST'])
-def add_expense():
-    expense = ExpenseSchema().load(request.get_json())
-    transactions.append(expense)
-    return "", 204
+incomes_route(app, transactions)
+expenses_route(app, transactions)
 
 
 if __name__ == "__main__":
