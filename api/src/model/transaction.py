@@ -10,7 +10,7 @@ class Transaction(object):
         self.created_at = dt.datetime.now()
 
     def __repr__(self):
-        return '<Transaction(name={self.description!r})>'.format(self=self)
+        return "<Transaction(name={self.description!r})>".format(self=self)
 
 
 class TransactionSchema(Schema):
