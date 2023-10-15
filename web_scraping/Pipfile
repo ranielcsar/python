@@ -1,4 +1,4 @@
 [packages]
 requests = "*"
-pandas = "*"
 beautifulsoup4 = "*"
+pandas = "*"

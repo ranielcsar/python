@@ -9,7 +9,9 @@ def fetchPageFromUrl(url: str):
     return response
 
 
-page = fetchPageFromUrl("https://ranielcsar.github.io/")
+page = fetchPageFromUrl(
+    "https://raw.githubusercontent.com/ranielcsar/hotline-pix/master/src/utils/formatPhoneNumber.js?token=GHSAT0AAAAAACHQZ4IASU2CT6GKUTQKTOLSZJEP44Q"
+)
 beautifulsoup = BeautifulSoup(page.text, "html.parser")
 skills = []
 
