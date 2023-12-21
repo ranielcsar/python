@@ -3,14 +3,14 @@ import requests as requests  # conexões de rede
 from bs4 import BeautifulSoup  # extrair os dados de documentos HTML e XML
 
 
-def fetchPageFromUrl(url: str):
+def fetch_page_from_url(url: str):
     response = requests.get(url)
 
     return response
 
 
-page = fetchPageFromUrl(
-    "https://raw.githubusercontent.com/ranielcsar/hotline-pix/master/src/utils/formatPhoneNumber.js?token=GHSAT0AAAAAACHQZ4IASU2CT6GKUTQKTOLSZJEP44Q"
+page = fetch_page_from_url(
+    "https://ranielcsar.github.io/"
 )
 beautifulsoup = BeautifulSoup(page.text, "html.parser")
 skills = []
